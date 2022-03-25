@@ -9,7 +9,6 @@ import api from "./utils/Api";
 export const App = () => {
    const [currentUser, setCurrentUser] = useState({});
    const [posts, setPosts] = useState([]);
-   console.log(posts)
 
    useEffect(()=> {
       Promise.all([api.getPostsList(), api.getUserInfo()])
