@@ -1,17 +1,37 @@
 import React from "react";
-import { Card } from 'antd';
+import { Card, Button } from 'antd';
 import "./styles.css";
 import dayjs from 'dayjs';
-// var dayjs = require('dayjs');
-// dayjs().format();
+import 'dayjs/locale/ru';
+import {ReactComponent as Save} from './img/save.svg';
+import cn from 'classnames';
 
-export const Post = ({title, image, tags, text, created_at, updated_at, author: {name, about, email, avatar}}) => {
-  let postDate = dayjs({created_at}).format('dddd HH:mm DD/MM/YYYY');
+dayjs.locale('ru');
+
+export const Post = ({onPostLike, onDeletePost, title, image, _id, likes, tags, text, created_at, updated_at, author: {name, about, email, avatar}, user}) => {
+  let postDate = dayjs(created_at).format('dddd, HH:mm DD.MM.YYYY');
+  let postDateUpdate = dayjs(updated_at).format('dddd, HH:mm DD.MM.YYYY');
+  let likeCouter = likes.length;
+  let liked = likes.some(id=> id === user._id);
+  
+
+  function handleLikeClick() {
+    onPostLike({_id, likes})
+  }
+
+  function handleDeletePostClick() {
+    onDeletePost({_id})
+  }
+
+
     return (
-      <div className="site-card-border-less-wrapper card">
-        <Card bordered={false}>
+        <Card bordered={false} className="card">
           <div className="title">
             <b>{title}</b>
+            <button className="card_like" onClick={handleLikeClick}>
+                <Save alt="likes" className={cn({'card_like_active': liked})}/>
+                <a>{likeCouter}</a>
+            </button>
           </div>
           <div className="user_info">
             <img className="avatar" src={avatar} alt="img" />
@@ -24,9 +44,9 @@ export const Post = ({title, image, tags, text, created_at, updated_at, author: 
           <img src={image} alt="img" />
           <div className="tags">{tags}</div>
           <p className="text">{text}</p>
-          <p>Опубликовано {created_at}</p>
-          <p>Изменено {updated_at}</p>
+          <p><b>Опубликовано: </b>{postDate}</p>
+          <p><b>Изменено: </b>{postDateUpdate}</p>
+          <Button type="primary" onClick={handleDeletePostClick}>Удалить пост</Button>
         </Card>
-      </div>
     );
   };

@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 
-export const Header = () => {
+export const Header = ({user}) => {
   return (
     <Box
       sx={{
@@ -33,6 +33,10 @@ export const Header = () => {
             Posts
           </Typography>
           <Button color="inherit">Login</Button>
+          <div className="profile">
+              {user.email && <span>{user.email}</span>}
+              {user.name && <span>{user.name}: {user.about}</span>}
+          </div>
         </Toolbar>
       </AppBar>
     </Box>

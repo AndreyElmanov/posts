@@ -3,8 +3,8 @@
     padding: 5px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-content: space-between;
+    /* justify-content: center; */
+    align-content: center;
 }
 
 .avatar {
@@ -14,16 +14,17 @@
 }
 
 .title {
-    height: 25px;
+    /* height: 25px; */
     border-bottom-style: solid;
     border-color: black;
     height: 40px;
     top: 0;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: 95%;
     padding: 5px;
+    box-sizing: content-box;
 }
 
 .title b {
@@ -56,4 +57,20 @@
 .text {
     margin: 10px;
     font-size: 20px;
+}
+
+.card_like {
+	cursor: pointer;
+	background: none;
+	border: none;
+	padding: 0;
+	display: flex;
+}
+
+.card_like_active {
+	fill: #000000;
+}
+
+.ant-btn-primary {
+    cursor: pointer;
 }

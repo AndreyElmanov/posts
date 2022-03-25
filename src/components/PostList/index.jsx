@@ -1,14 +1,14 @@
 import React from "react";
 import s from "./styles.module.css";
-import { postData } from "../../posts";
 
 import { Post } from "../Post";
 
-export const PostList = () => {
+export const PostList = ({posts, handlePostLike, user, handleDeletePost}) => {
+
   return (
     <div className={s.cards}>
-      {postData.map((post) => {
-        return <Post key={post._id} {...post} />;
+      {posts.map(({...postItem}) => {
+        return <Post key={postItem._id} {...postItem} onPostLike={handlePostLike} user={user} onDeletePost={handleDeletePost}/>;
       })}
     </div>
   );
