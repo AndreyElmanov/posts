@@ -42,7 +42,9 @@ export const Post = ({onPostLike, onDeletePost, title, image, _id, likes, tags, 
             </div>
           </div>
           <img src={image} alt="img" />
-          <div className="tags">{tags}</div>
+          <div className="all-tags">
+            {tags.map((tag) => { return <div key={tags.indexOf(tag)} className="tag">{tag}</div>})}
+          </div>
           <p className="text">{text}</p>
           <p><b>Опубликовано: </b>{postDate}</p>
           <p><b>Изменено: </b>{postDateUpdate}</p>
