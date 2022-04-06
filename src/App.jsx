@@ -60,6 +60,7 @@ export const App = () => {
                 posts={posts}
                 handlePostLike={handlePostLike}
                 handleDeletePost={handleDeletePost}
+                setPosts={setPosts}
               />
             }
           />
@@ -70,6 +71,7 @@ export const App = () => {
                 posts={posts}
                 handlePostLike={handlePostLike}
                 handleDeletePost={handleDeletePost}
+                setPosts={setPosts}
               />
             }
           />

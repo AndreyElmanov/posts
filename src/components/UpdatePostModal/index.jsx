@@ -18,9 +18,10 @@ const style = {
   p: 4,
 };
 
-export default function UpdateModal({ setPosts }) {
+export default function UpdateModal({setPosts, post_id, posttitle, postimage, posttext, posttags}) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
+
   const handleClose = () => setOpen(false);
   const {
     register,
@@ -31,7 +32,20 @@ export default function UpdateModal({ setPosts }) {
   });
 
   function onSubmit(newPost) {
-    console.log("Нужно отредактировать", newPost);
+    const newTags = newPost.tags.split(",");
+    const updatedPost = {
+      title: newPost.title ? newPost.title : posttitle,
+      image: newPost.image ? newPost.image : postimage,
+      text: newPost.text ? newPost.text : posttext,
+      tags: newPost.tags ? newTags : posttags
+    }
+
+    api.updatePost(updatedPost, post_id)
+      .then(() => {
+        api.getPostsList().then((newPosts) => {
+          setPosts(newPosts);
+        });
+      });
     setOpen(false);
   }
 
@@ -50,22 +64,22 @@ export default function UpdateModal({ setPosts }) {
             <input
               type="text"
               {...register("title")}
-              placeholder="Название поста"
+              placeholder={posttitle}
             />
             <input
               type="text"
               {...register("image")}
-              placeholder="Ссылка на картинку поста"
+              placeholder={postimage}
             />
-            {/* <input 
+            <input 
                 type="text"
                 {...register('tags')}
-                placeholder="Теги"
-             /> */}
+                placeholder={posttags ? `${posttags} (Теги пишем через ',')` : "Теги пишем через ','"}
+             />
             <textarea
               type="text"
               {...register("text")}
-              placeholder="Текст поста"
+              placeholder={posttext}
             />
             <button>Изменить пост</button>
           </form>

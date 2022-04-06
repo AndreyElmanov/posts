@@ -15,6 +15,7 @@ dayjs.locale("ru");
 export const Post = ({
   onPostLike,
   onDeletePost,
+  setPosts,
   title,
   image,
   _id,
@@ -83,7 +84,7 @@ export const Post = ({
         <Button variant="contained" onClick={handleDeletePostClick}>
           Удалить пост
         </Button>
-        <UpdateModal />
+        <UpdateModal setPosts={setPosts} posttext={text} postimage={image} posttitle={title} post_id={_id} posttags={tags}/>
         </div>
       )}
     </Card>

@@ -63,10 +63,10 @@ class Api {
         }).then(onResponse)
     }
 
-    updatePost(newPost, postID){
+    updatePost(updateNewPost, postID){
         return fetch(`${this._baseUrl}/posts/${postID}`, {
-            method: "PUT",
-            body: JSON.stringify(newPost),
+            method: "PATCH",
+            body: JSON.stringify(updateNewPost),
             headers: {
                 authorization: this._token,
                 "Content-type": "application/json",

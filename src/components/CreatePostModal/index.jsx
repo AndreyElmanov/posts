@@ -31,7 +31,15 @@ export default function CreateModal({ setPosts }) {
   });
 
   function onSubmit(newPost) {
-    api.addPost(newPost).then(() => {
+    const newTags = newPost.tags.split(",");
+    const upNewPost = {
+      title: newPost.title ? newPost.title : "Название поста",
+      image: newPost.image ? newPost.image : "Ссылка на картинку поста",
+      text: newPost.text ? newPost.text : "Текст поста",
+      tags: newPost.tags ? newTags : "",
+    };
+
+    api.addPost(upNewPost).then(() => {
       api.getPostsList().then((newPosts) => {
         setPosts(newPosts);
       });
@@ -68,11 +76,11 @@ export default function CreateModal({ setPosts }) {
               {...register("image")}
               placeholder="Ссылка на картинку поста"
             />
-            {/* <input 
+            <input 
                 type="text"
                 {...register('tags')}
-                placeholder="Теги"
-             /> */}
+                placeholder="Теги пишем через ','"
+             />
             <textarea
               type="text"
               {...register("text", {
