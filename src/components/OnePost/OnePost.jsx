@@ -8,6 +8,7 @@ import { ReactComponent as Save } from "../Post/img/save.svg";
 import cn from "classnames";
 import { UserContext } from "../../context/userContext";
 import UpdateModal from "../UpdatePostModal";
+import { useNavigate } from "react-router-dom";
 
 dayjs.locale("ru");
 
@@ -26,6 +27,7 @@ export const OnePost = ({
   author: { name, about, email, avatar },
   author,
 }) => {
+  const navigate = useNavigate();
   let postDate = dayjs(created_at).format("dddd, HH:mm DD.MM.YYYY");
   let postDateUpdate = dayjs(updated_at).format("dddd, HH:mm DD.MM.YYYY");
   let likeCounter = likes.length;
@@ -38,6 +40,7 @@ export const OnePost = ({
 
   function handleDeletePostClick() {
     onDeletePost({ _id });
+    navigate("*");
   }
 
   return (

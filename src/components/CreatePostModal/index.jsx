@@ -30,13 +30,14 @@ export default function CreateModal({ setPosts }) {
     mode: "onBlur",
   });
 
+
   function onSubmit(newPost) {
     const newTags = newPost.tags.split(",");
     const upNewPost = {
       title: newPost.title ? newPost.title : "Название поста",
-      image: newPost.image ? newPost.image : "Ссылка на картинку поста",
+      image: newPost.image ? newPost.image : 'https://react-learning.ru/image-compressed/default-image.jpg',
       text: newPost.text ? newPost.text : "Текст поста",
-      tags: newPost.tags ? newTags : "",
+      tags: newPost.tags ? newTags : [],
     };
 
     api.addPost(upNewPost).then(() => {
@@ -84,9 +85,7 @@ export default function CreateModal({ setPosts }) {
             <textarea
               type="text"
               {...register("text", {
-                pattern: {
                   required: "Вы забыли написать текст поста",
-                },
               })}
               placeholder="Текст поста"
             />
