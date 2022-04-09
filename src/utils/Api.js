@@ -15,8 +15,8 @@ class Api {
       },
     })
       .then(onResponse)
-      .catch(() => {
-        alert(onResponse);
+      .catch((err) => {
+        alert(err);
       });
   }
 
@@ -27,8 +27,8 @@ class Api {
       },
     })
       .then(onResponse)
-      .catch(() => {
-        alert(onResponse);
+      .catch((err) => {
+        alert(err)
       });
   }
 
@@ -39,8 +39,8 @@ class Api {
       },
     })
       .then(onResponse)
-      .catch(() => {
-        alert(onResponse);
+      .catch((err) => {
+        alert(err);
       });
   }
 
@@ -52,8 +52,8 @@ class Api {
       },
     })
       .then(onResponse)
-      .catch(() => {
-        alert(onResponse);
+      .catch((err) => {
+        alert(err);
       });
   }
 
@@ -65,8 +65,8 @@ class Api {
       },
     })
       .then(onResponse)
-      .catch(() => {
-        alert(onResponse);
+      .catch((err) => {
+        alert(err);
       });
   }
 
@@ -80,8 +80,8 @@ class Api {
       },
     })
       .then(onResponse)
-      .catch(() => {
-        alert(onResponse);
+      .catch((err) => {
+        alert(err);
       });
   }
 
@@ -95,8 +95,8 @@ class Api {
       },
     })
       .then(onResponse)
-      .catch(() => {
-        alert(onResponse);
+      .catch((err) => {
+        alert(err);
       });
   }
 }
