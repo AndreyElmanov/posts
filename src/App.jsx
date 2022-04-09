@@ -32,7 +32,6 @@ export const App = () => {
       const newPostLiked = posts.map((post) => {
         return post._id === newPost._id ? newPost : post;
       });
-
       setPosts(newPostLiked);
     });
   }
