@@ -10,6 +10,7 @@ import { NotFoundPage } from "./Pades/NotFoundPage/NotFoundPage";
 import { UserContext } from "./context/userContext";
 import { PostPage } from "./Pades/PostPage/PostPage";
 import Spinner from "./components/Spinner";
+import { PaginationOutlined } from "./components/Pagination"
 
 export const App = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -55,12 +56,15 @@ export const App = () => {
             element={
               isLoading
               ? <Spinner/>
-              : <AllPosts
+              : <>
+              <AllPosts
                 posts={posts}
                 handlePostLike={handlePostLike}
                 handleDeletePost={handleDeletePost}
                 setPosts={setPosts}
               />
+              <PaginationOutlined />
+              </>
             }
           />
           <Route

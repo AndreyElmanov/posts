@@ -1,5 +1,6 @@
 import React from "react";
 import { PostList } from "../../components/PostList";
+import './styles.css';
 
 export const AllPosts = ({
   posts,

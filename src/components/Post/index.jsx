@@ -24,7 +24,6 @@ export const Post = ({
   text,
   created_at,
   updated_at,
-  author: { name, about, email, avatar },
   author,
 }) => {
   let postDate = dayjs(created_at).format("dddd, HH:mm DD.MM.YYYY");
@@ -53,11 +52,11 @@ export const Post = ({
         </button>
       </div>
       <div className="user_info">
-        <img className="avatar" src={avatar} alt="img" />
+        <img className="avatar" src={author?.avatar} alt="img" />
         <div className="user">
-          <b>{name}</b>
-          <a>{about}</a>
-          <b>{email}</b>
+          <b>{author?.name}</b>
+          <a>{author?.about}</a>
+          <b>{author?.email}</b>
         </div>
       </div>
       <img src={image} alt="img" />
