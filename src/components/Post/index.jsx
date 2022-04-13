@@ -40,14 +40,6 @@ export const Post = ({
     onDeletePost({ _id });
   }
 
-  const points = () => {
-    return (
-      <Link to={`/post/${_id}`}>
-        <b>...</b>
-      </Link>
-    );
-  };
-
   return (
     <Card sx={{ maxWidth: 345 }} className="card">
       <div className="title">

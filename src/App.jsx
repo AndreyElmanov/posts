@@ -44,7 +44,7 @@ export const App = () => {
       });
     });
   }
-
+  
   return (
     <UserContext.Provider value={currentUser}>
       <Header />

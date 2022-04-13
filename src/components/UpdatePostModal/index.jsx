@@ -16,6 +16,7 @@ const style = {
   border: "2px solid #000",
   boxShadow: 24,
   p: 4,
+  borderRadius: "5px",
 };
 
 export default function UpdateModal({setPosts, post_id, posttitle, postimage, posttext, posttags}) {
