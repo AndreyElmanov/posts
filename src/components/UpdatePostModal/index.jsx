@@ -32,7 +32,7 @@ export default function UpdateModal({setPosts, post_id, posttitle, postimage, po
   });
 
   function onSubmit(newPost) {
-    const newTags = newPost.tags.split(",");
+    const newTags = newPost.tags.split(",").map(tag => tag.trim()).filter(tag => tag !== "");
     const updatedPost = {
       title: newPost.title ? newPost.title : posttitle,
       image: newPost.image ? newPost.image : postimage,
@@ -64,21 +64,25 @@ export default function UpdateModal({setPosts, post_id, posttitle, postimage, po
             <input
               type="text"
               {...register("title")}
+              defaultValue={posttitle}
               placeholder={posttitle}
             />
             <input
               type="text"
               {...register("image")}
+              defaultValue={postimage}
               placeholder={postimage}
             />
             <input 
                 type="text"
                 {...register('tags')}
+                defaultValue={posttags}
                 placeholder={posttags ? `${posttags} (Теги пишем через ',')` : "Теги пишем через ','"}
              />
             <textarea
               type="text"
               {...register("text")}
+              defaultValue={posttext}
               placeholder={posttext}
             />
             <button>Изменить пост</button>

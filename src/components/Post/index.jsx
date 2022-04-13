@@ -40,6 +40,14 @@ export const Post = ({
     onDeletePost({ _id });
   }
 
+  const points = () => {
+    return (
+      <Link to={`/post/${_id}`}>
+        <b>...</b>
+      </Link>
+    );
+  };
+
   return (
     <Card sx={{ maxWidth: 345 }} className="card">
       <div className="title">
@@ -61,7 +69,7 @@ export const Post = ({
       </div>
       <img src={image} alt="img" />
       <div className="all-tags">
-        {tags.map((tag) => {
+        {tags.filter(tag => tag !== "").map((tag) => {
           return (
             <div key={tags.indexOf(tag)} className="tag">
               {tag}
@@ -69,7 +77,11 @@ export const Post = ({
           );
         })}
       </div>
-      <p className="text">{text}</p>
+      <p className="text">{text.substr(0, 100)}
+      {text.length > 100 && <Link to={`/post/${_id}`}>
+          <a>... продолжение</a>
+        </Link>}
+        </p>
       <p>
         <b>Опубликовано: </b>
         {postDate}
